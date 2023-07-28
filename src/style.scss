@@ -40,6 +40,7 @@ $mobile-keypad: 5vw;
   gap: 20px;
   padding: 20px;
   height: 40vh;
+  max-width: 100%;
   background-color: $dark-mode-upper-bg;
   color: $dark-mode-font-upper;
   nav {
@@ -48,7 +49,7 @@ $mobile-keypad: 5vw;
     }
   }
   input {
-    width: 100%;
+    max-width: 100%;
     height: 60px;
     background: none;
     color: $dark-mode-font-upper;
@@ -58,6 +59,7 @@ $mobile-keypad: 5vw;
     border-left: none;
     border-right: none;
     border-bottom: 1px solid $all-clear-button;
+    border-radius: 5%;
   }
 }
 
@@ -75,12 +77,9 @@ $mobile-keypad: 5vw;
     padding: 5px;
     button {
       border-radius: 10%;
-      font-size: $mobile-keypad;
+      font-size: 2.5rem;
       color: $dark-mode-font-lower;
       background: none;
-    }
-    img {
-      width: $mobile-keypad;
     }
   }
   .arithmetic__main {
