@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <section class="upper__section">
+        <div>
+          <h1>Calculator</h1>
+          <h2><i>...does maths good</i></h2>
+        </div>
+        <div><input type="text" class="display" /></div>
+      </section>
+      <section class="lower__section">
+        <div class="keypad">
+          <button class="keypad__value">7</button>
+          <button class="keypad__value">8</button>
+          <button class="keypad__value">9</button>
+          <button class="keypad__value">4</button>
+          <button class="keypad__value">5</button>
+          <button class="keypad__value">6</button>
+          <button class="keypad__value">1</button>
+          <button class="keypad__value">2</button>
+          <button class="keypad__value">3</button>
+          <button class="keypad__value">.</button>
+          <button class="keypad__value">0</button>
+          <button id="delete">DEL</button>
+        </div>
+        <div class="arithmetic__main">
+          <button class="keypad__value" id="divide">/</button>
+          <button id="clear">AC</button>
+          <button class="keypad__value" id="multiply">*</button>
+          <button id="brackets">( )</button>
+          <button class="keypad__value" id="subtract">-</button>
+          <button id="percentage">%</button>
+          <button class="keypad__value" id="add">+</button>
+          <button id="equals">=</button>
+        </div>
+      </section>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
