@@ -74,6 +74,9 @@
   font-size: 1.5rem;
   background-color: #e5e5e5;
 }
-.lower__section .arithmetic__main button img {
-  width: 5vw;
+.lower__section .arithmetic__main .clear__operator {
+  background-color: #f5ae94;
+}
+.lower__section .arithmetic__main .result__operator {
+  background-color: #fe6430;
 }/*# sourceMappingURL=style.css.map */

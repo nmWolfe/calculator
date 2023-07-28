@@ -92,9 +92,12 @@ $mobile-keypad: 5vw;
       border-radius: 10%;
       font-size: 1.5rem;
       background-color: $arithmetic-ops-button;
-      img {
-        width: $mobile-keypad;
-      }
+    }
+    .clear__operator {
+      background-color: $all-clear-button;
+    }
+    .result__operator {
+      background-color: $equals-button;
     }
   }
 }
