@@ -27,10 +27,42 @@ $mobile-keypad: 5vw;
   font-weight: 400;
 }
 
+body {
+  background-color: #37484e;
+}
+
 .wrapper {
   min-width: 350px;
-  max-width: 500px;
   margin: auto;
+  box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 10px -1px,
+    rgba(255, 255, 255, 0.3) 0px 1px 10px -1px;
+  border-radius: 10%;
+}
+
+header {
+  padding: 20px;
+  h2 {
+    color: $dark-mode-font-upper;
+  }
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $dark-mode-upper-bg;
+    color: $dark-mode-font-upper;
+    padding: 20px;
+    h1 {
+      font-size: 2.5rem;
+      background-color: $dark-mode-upper-bg;
+    }
+    button {
+      background-color: $dark-mode-upper-bg;
+      border: none;
+    }
+    img {
+      width: 30px;
+    }
+  }
 }
 
 .upper__section {
@@ -39,65 +71,131 @@ $mobile-keypad: 5vw;
   justify-content: space-between;
   gap: 20px;
   padding: 20px;
-  height: 40vh;
+  height: 40%;
   max-width: 100%;
   background-color: $dark-mode-upper-bg;
   color: $dark-mode-font-upper;
-  nav {
-    h1 {
-      font-size: 2.5rem;
-    }
-  }
   input {
-    max-width: 100%;
-    height: 60px;
     background: none;
     color: $dark-mode-font-upper;
-    font-size: 2rem;
     text-align: right;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 1px solid $all-clear-button;
-    border-radius: 5%;
+    border: none;
+  }
+  .output {
+    align-self: flex-end;
+    width: 50%;
+    height: 7vh;
+    font-size: 2rem;
+  }
+  .operator {
+    align-self: flex-end;
+    width: 40%;
+    height: 3vh;
+    font-size: 2rem;
+  }
+  .display {
+    height: 10vh;
+    font-size: 3rem;
+    max-width: 100%;
   }
 }
 
 .lower__section {
-  height: 60vh;
+  height: 60%;
   padding: 5px;
   background-color: $dark-mode-lower-bg;
   color: $dark-mode-font-lower;
   display: flex;
-  .keypad {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+  flex-wrap: wrap;
+  .extended {
+    display: flex;
+    gap: 5px;
+    padding: 0 7px;
     width: 100%;
-    gap: 8px;
-    padding: 5px;
-    button {
-      border-radius: 10%;
-      font-size: 2.5rem;
-      color: $dark-mode-font-lower;
-      background: none;
-    }
-  }
-  .arithmetic__main {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 60%;
-    gap: 8px;
-    padding: 5px;
-    button {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s ease-in;
+    .extended__operator {
+      flex: 1;
       border-radius: 10%;
       font-size: 1.5rem;
-      background-color: $arithmetic-ops-button;
+      background-color: #e5e5e5b8;
+      font-weight: 400;
+      border: none;
     }
-    .clear__operator {
-      background-color: $all-clear-button;
+  }
+  .extended.show {
+    max-height: 100vh;
+  }
+  .basic__keypad {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    .keypad {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      width: 100%;
+      gap: 5px;
+      padding: 5px;
+      #delete {
+        font-size: 1rem;
+      }
+      button {
+        border-radius: 10%;
+        font-size: 2.5rem;
+        color: $dark-mode-font-lower;
+        background: none;
+      }
     }
-    .result__operator {
-      background-color: $equals-button;
+    .arithmetic__main {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px;
+      padding: 5px;
+      button {
+        border-radius: 10%;
+        font-size: 1.5rem;
+        background-color: $arithmetic-ops-button;
+      }
+      .clear__operator {
+        background-color: $all-clear-button;
+        grid-row: 3 / span 2;
+      }
+      .result__operator {
+        background-color: $equals-button;
+        grid-column: 2;
+        grid-row: 3 / span 2;
+      }
+    }
+  }
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  img {
+    width: 50px;
+  }
+}
+
+@media screen and (min-width: 550px) {
+  .wrapper {
+    margin-top: 15vh;
+    max-width: fit-content;
+  }
+  .lower__section {
+    flex-wrap: nowrap;
+    .extended {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 0;
+      max-width: 0;
+      max-height: 100vw;
+    }
+    .extended.show {
+      max-width: fit-content;
+      padding: 7px;
     }
   }
 }
