@@ -8,42 +8,61 @@
   </head>
   <body>
     <div class="wrapper">
-      <section class="upper__section">
-        <div>
+      <header>
+        <div class="nav">
           <h1>Calculator</h1>
-          <h2><i>...does maths badly at the moment</i></h2>
+          <button id="scientific-switch">
+            <img src="./src/assets/flask.svg" alt="scientific flask" />
+          </button>
         </div>
+        <h2><i>...does maths badly...</i></h2>
+      </header>
+      <section class="upper__section">
+        <div></div>
         <input type="text" class="output" />
         <input type="text" class="operator" />
         <input type="text" class="display" />
       </section>
       <section class="lower__section">
-        <div class="keypad">
-          <button class="keypad__value">7</button>
-          <button class="keypad__value">8</button>
-          <button class="keypad__value">9</button>
-          <button class="keypad__value">4</button>
-          <button class="keypad__value">5</button>
-          <button class="keypad__value">6</button>
-          <button class="keypad__value">1</button>
-          <button class="keypad__value">2</button>
-          <button class="keypad__value">3</button>
-          <button class="keypad__value">.</button>
-          <button class="keypad__value">0</button>
-          <button id="delete">DEL</button>
+        <div class="extended">
+          <button class="extended__operator" id="answer">Ans</button>
+          <button class="extended__operator" id="square-root">&#8730;</button>
+          <button class="extended__operator" id="pi">&pi;</button>
+          <button class="extended__operator" id="sin">sin</button>
+          <button class="extended__operator" id="cos">cos</button>
+          <button class="extended__operator" id="tan">tan</button>
+          <button class="extended__operator" id="bracket-left">(</button>
+          <button class="extended__operator" id="bracket-right">)</button>
+          <button class="extended__operator" id="percentage">%</button>
         </div>
-        <div class="arithmetic__main">
-          <!-- <button class="keypad__operator" id="bracket-left">(</button>
-          <button class="keypad__operator" id="bracket-right">)</button>
-          <button class="keypad__operator" id="percentage">%</button> -->
-          <button class="keypad__operator" id="multiply">*</button>
-          <button class="keypad__operator" id="add">+</button>
-          <button class="keypad__operator" id="divide">/</button>
-          <button class="keypad__operator" id="subtract">-</button>
-          <button class="clear__operator" id="clear">AC</button>
-          <button class="result__operator" id="equals">=</button>
+        <div class="basic__keypad">
+          <div class="keypad">
+            <button class="keypad__value">7</button>
+            <button class="keypad__value">8</button>
+            <button class="keypad__value">9</button>
+            <button class="keypad__value">4</button>
+            <button class="keypad__value">5</button>
+            <button class="keypad__value">6</button>
+            <button class="keypad__value">1</button>
+            <button class="keypad__value">2</button>
+            <button class="keypad__value">3</button>
+            <button class="keypad__value">.</button>
+            <button class="keypad__value">0</button>
+            <button id="delete">DEL</button>
+          </div>
+          <div class="arithmetic__main">
+            <button class="keypad__operator" id="multiply">*</button>
+            <button class="keypad__operator" id="add">+</button>
+            <button class="keypad__operator" id="divide">/</button>
+            <button class="keypad__operator" id="subtract">-</button>
+            <button class="clear__operator" id="clear">AC</button>
+            <button class="result__operator" id="equals">=</button>
+          </div>
         </div>
       </section>
+      <footer>
+        <img src="./src/assets/github.svg" alt="" />
+      </footer>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
