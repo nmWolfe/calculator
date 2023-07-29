@@ -5,7 +5,7 @@ const outputDisplay = document.querySelector<HTMLInputElement>(".output");
 const operatorDisplay = document.querySelector<HTMLButtonElement>(".operator");
 const allClear = document.querySelector("#clear");
 const backspace = document.querySelector("#delete");
-// const percentage = document.querySelector("#percentage");
+const percentage = document.querySelector("#percentage");
 // const brackets = document.querySelector("#brackets");
 const keypadValueArr = document.querySelectorAll(".keypad__value");
 const keypadOperatorArr =
@@ -20,8 +20,8 @@ if (
   !backspace ||
   !equals ||
   !keypadValueArr ||
-  !keypadOperatorArr
-  //   !percentage ||
+  !keypadOperatorArr ||
+  !percentage
 ) {
   throw new Error("Variable null error");
 }
@@ -40,6 +40,7 @@ const reDoubleSearch = /[-\*\+\/\(](?=[-\*\+\/\(\)])/;
 const clearDisplay = () => {
   display.value = "0";
   outputDisplay.value = "";
+  operatorDisplay.value = "";
 };
 allClear.addEventListener("click", clearDisplay);
 
@@ -61,6 +62,7 @@ const updateDisplay = (event: Event) => {
   }
   display.value += buttonVal.innerHTML;
 };
+
 // Check for repeat operator inputs ========= Necessary later w/ scientific
 const handleRepeatInputs = () => {
   if (reDoubleSearch.test(display.value)) {
@@ -82,7 +84,7 @@ const handleOperator = (event: Event) => {
     button.disabled = true;
   });
   outputDisplay.value = display.value;
-  display.value = "";
+  display.value = "0";
 };
 
 const evaluateEquation = () => {
@@ -102,6 +104,8 @@ const evaluateEquation = () => {
     case "*":
       result = firstNum * secondNum;
       break;
+    default:
+      result = "Error";
   }
   display.value = String(result);
   outputDisplay.value = "";
@@ -120,24 +124,33 @@ keypadOperatorArr.forEach((button) => {
 });
 equals.addEventListener("click", evaluateEquation);
 
-// // Convert to a percentage when percentage button is clicked
-// const returnPercentage = () => {
-//   // Will return as boolean if RegEx search matches
-//   if (reSearchError.test(display.value)) {
-//     outputDisplay.value = "ERROR";
-//     // Acts like delay - wipe input display
-//     setTimeout(function () {
-//       clearDisplay();
-//     }, 2000);
-//     return;
-//   }
-//   const numToConvert = Number(display.value);
-//   display.value = String(numToConvert / 100);
-// };
-// percentage.addEventListener("click", returnPercentage);
+// Convert to a percentage when percentage button is clicked
+const returnPercentage = () => {
+  // Will return as boolean if RegEx search matches
+  if (reSearchError.test(display.value)) {
+    outputDisplay.value = "ERROR";
+    // Acts like delay - wipe input display
+    setTimeout(function () {
+      clearDisplay();
+    }, 2000);
+    return;
+  }
+  const numToConvert = Number(display.value);
+  display.value = String(numToConvert / 100);
+};
+percentage.addEventListener("click", returnPercentage);
 
-// Add brackets to value if bracket button is clicked
-// const surroundBrackets = () => {
-//   display.value = `(${display.value})`;
-// };
-// brackets.addEventListener("click", surroundBrackets);
+// RANDOM ACTIONS OF CLICK
+
+const scienceSwitch =
+  document.querySelector<HTMLButtonElement>("#scientific-switch");
+if (!scienceSwitch) {
+  throw new Error("Var NULL error");
+}
+
+const toggleScienceCalc = () => {
+  const extended = document.querySelector<HTMLDivElement>(".extended");
+  extended.classList.toggle("show");
+};
+
+scienceSwitch.addEventListener("click", toggleScienceCalc);
