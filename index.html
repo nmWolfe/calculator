@@ -8,8 +8,8 @@
   </head>
   <body>
     <div class="wrapper">
-      <header>
-        <div class="nav">
+      <header class="header">
+        <div class="header__nav">
           <h1>Calculator</h1>
           <button id="scientific-switch">
             <img src="./src/assets/flask.svg" alt="scientific flask" />
@@ -25,15 +25,16 @@
       </section>
       <section class="lower__section">
         <div class="extended">
-          <button class="extended__operator" id="answer">Ans</button>
           <button class="extended__operator" id="square-root">&#8730;</button>
           <button class="extended__operator" id="pi">&pi;</button>
           <button class="extended__operator" id="sin">sin</button>
           <button class="extended__operator" id="cos">cos</button>
           <button class="extended__operator" id="tan">tan</button>
+          <button class="extended__operator" id="tan">log</button>
           <button class="extended__operator" id="bracket-left">(</button>
           <button class="extended__operator" id="bracket-right">)</button>
           <button class="extended__operator" id="percentage">%</button>
+          <button class="extended__operator" id="answer">Ans</button>
         </div>
         <div class="basic__keypad">
           <div class="keypad">
@@ -60,8 +61,10 @@
           </div>
         </div>
       </section>
-      <footer>
-        <img src="./src/assets/github.svg" alt="" />
+      <footer class="footer">
+        <a href="https://github.com/nmWolfe" target="_blank"
+          ><img src="./src/assets/github.svg" alt="github"
+        /></a>
       </footer>
     </div>
     <script type="module" src="/src/main.ts"></script>

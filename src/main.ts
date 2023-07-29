@@ -6,11 +6,13 @@ const operatorDisplay = document.querySelector<HTMLButtonElement>(".operator");
 const allClear = document.querySelector("#clear");
 const backspace = document.querySelector("#delete");
 const percentage = document.querySelector("#percentage");
-// const brackets = document.querySelector("#brackets");
-const keypadValueArr = document.querySelectorAll(".keypad__value");
-const keypadOperatorArr =
-  document.querySelectorAll<HTMLButtonElement>(".keypad__operator");
 const equals = document.querySelector<HTMLButtonElement>(".result__operator");
+const keypadValueArr = document.querySelectorAll(".keypad__value");
+const keypadOpArr =
+  document.querySelectorAll<HTMLButtonElement>(".keypad__operator");
+const sciOpArr = document.querySelectorAll<HTMLButtonElement>(
+  ".extended__operator"
+);
 
 if (
   !display ||
@@ -20,11 +22,23 @@ if (
   !backspace ||
   !equals ||
   !keypadValueArr ||
-  !keypadOperatorArr ||
+  !keypadOpArr ||
+  !sciOpArr ||
   !percentage
 ) {
   throw new Error("Variable null error");
 }
+// Func to turn scientific mode on/off
+const scienceSwitch =
+  document.querySelector<HTMLButtonElement>("#scientific-switch");
+if (!scienceSwitch) {
+  throw new Error("Var NULL error");
+}
+const toggleScienceCalc = () => {
+  const extended = document.querySelector<HTMLDivElement>(".extended");
+  extended.classList.toggle("show");
+};
+scienceSwitch.addEventListener("click", toggleScienceCalc);
 display.value = "0";
 let resultDisplayed = false;
 
@@ -80,13 +94,14 @@ const handleOperator = (event: Event) => {
   }
   const target = event.target as HTMLButtonElement;
   operatorDisplay.value = target.innerHTML;
-  keypadOperatorArr.forEach((button) => {
+  keypadOpArr.forEach((button) => {
     button.disabled = true;
   });
   outputDisplay.value = display.value;
   display.value = "0";
 };
 
+// Evaluate
 const evaluateEquation = () => {
   const firstNum = parseFloat(outputDisplay.value);
   const secondNum = parseFloat(display.value);
@@ -105,13 +120,13 @@ const evaluateEquation = () => {
       result = firstNum * secondNum;
       break;
     default:
-      result = "Error";
+      result = "0";
   }
   display.value = String(result);
   outputDisplay.value = "";
   operatorDisplay.value = "";
   resultDisplayed = true;
-  keypadOperatorArr.forEach((button) => {
+  keypadOpArr.forEach((button) => {
     button.disabled = false;
   });
 };
@@ -119,38 +134,14 @@ const evaluateEquation = () => {
 keypadValueArr.forEach((button) => {
   button.addEventListener("click", updateDisplay);
 });
-keypadOperatorArr.forEach((button) => {
+keypadOpArr.forEach((button) => {
   button.addEventListener("click", handleOperator);
 });
 equals.addEventListener("click", evaluateEquation);
 
 // Convert to a percentage when percentage button is clicked
 const returnPercentage = () => {
-  // Will return as boolean if RegEx search matches
-  if (reSearchError.test(display.value)) {
-    outputDisplay.value = "ERROR";
-    // Acts like delay - wipe input display
-    setTimeout(function () {
-      clearDisplay();
-    }, 2000);
-    return;
-  }
   const numToConvert = Number(display.value);
   display.value = String(numToConvert / 100);
 };
 percentage.addEventListener("click", returnPercentage);
-
-// RANDOM ACTIONS OF CLICK
-
-const scienceSwitch =
-  document.querySelector<HTMLButtonElement>("#scientific-switch");
-if (!scienceSwitch) {
-  throw new Error("Var NULL error");
-}
-
-const toggleScienceCalc = () => {
-  const extended = document.querySelector<HTMLDivElement>(".extended");
-  extended.classList.toggle("show");
-};
-
-scienceSwitch.addEventListener("click", toggleScienceCalc);
