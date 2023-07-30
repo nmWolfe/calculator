@@ -116,6 +116,7 @@ const evaluateEquation = () => {
   display.value = String(result);
   // Store result value for ANS button
   sciOpArr[9].value = String(result);
+  answerDisplay.value = `Ans = ${sciOpArr[9].value}`;
   outputDisplay.value = "";
   operatorDisplay.value = "";
   resultDisplayed = true;
@@ -132,6 +133,20 @@ keypadOpArr.forEach((button) => {
 });
 equals.addEventListener("click", evaluateEquation);
 
+// Add PI to display as a number.
+const handlePi = () => {
+  const piNum = Math.PI;
+  display.value = String(piNum);
+};
+sciOpArr[0].addEventListener("click", handlePi);
+
+// Return SQrt to display
+const handleSqRt = () => {
+  const squaredNum = Math.sqrt(Number(display.value));
+  display.value = String(squaredNum);
+};
+sciOpArr[7].addEventListener("click", handleSqRt);
+
 // Convert current display to percentage
 const returnPercentage = () => {
   const numToConvert = Number(display.value);
@@ -139,24 +154,9 @@ const returnPercentage = () => {
 };
 sciOpArr[8].addEventListener("click", returnPercentage);
 
-// Return SQrt to display
-const handleSqRt = () => {
-  const squaredNum = Math.sqrt(Number(display.value));
-  display.value = String(squaredNum);
-};
-sciOpArr[0].addEventListener("click", handleSqRt);
-
-// Add PI to display as a number.
-const handlePi = () => {
-  const piNum = Math.PI;
-  display.value = String(piNum);
-};
-sciOpArr[1].addEventListener("click", handlePi);
-
 // Display ANSWER value
 const handleAns = () => {
   display.value = sciOpArr[9].value;
-  answerDisplay.value = `Ans = ${sciOpArr[9].value}`;
 };
 sciOpArr[9].addEventListener("click", handleAns);
 
