@@ -19,6 +19,7 @@ body {
   box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 10px -1px,
     rgba(255, 255, 255, 0.3) 0px 1px 10px -1px;
   border-radius: 10%;
+  margin-top: 1vh;
 }
 
 .header {
@@ -44,6 +45,12 @@ body {
     img {
       width: 30px;
     }
+  }
+  .answer {
+    border: none;
+    background-color: $dark-mode-upper-bg;
+    margin-top: 20px;
+    color: $dark-mode-font-upper;
   }
 }
 
@@ -163,7 +170,7 @@ body {
 
 @media screen and (min-width: 550px) {
   .wrapper {
-    margin-top: 12vh;
+    margin-top: 10vh;
     max-width: fit-content;
   }
   .lower__section {

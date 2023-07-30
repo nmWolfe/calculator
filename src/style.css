@@ -17,6 +17,7 @@ body {
   margin: auto;
   box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 10px -1px, rgba(255, 255, 255, 0.3) 0px 1px 10px -1px;
   border-radius: 10%;
+  margin-top: 1vh;
 }
 
 .header {
@@ -43,6 +44,12 @@ body {
 }
 .header .header__nav img {
   width: 30px;
+}
+.header .answer {
+  border: none;
+  background-color: #37484e;
+  margin-top: 20px;
+  color: #fefefe;
 }
 
 .upper__section {
@@ -161,7 +168,7 @@ body {
 
 @media screen and (min-width: 550px) {
   .wrapper {
-    margin-top: 12vh;
+    margin-top: 10vh;
     max-width: -moz-fit-content;
     max-width: fit-content;
   }
