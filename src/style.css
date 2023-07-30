@@ -20,7 +20,7 @@ body {
 }
 
 .header {
-  padding: 20px;
+  padding: 40px;
 }
 .header h2 {
   color: #fefefe;
@@ -104,7 +104,6 @@ body {
   font-size: 1.5rem;
   background-color: rgba(229, 229, 229, 0.7215686275);
   font-weight: 400;
-  border: none;
 }
 .lower__section .extended.show {
   max-height: 100vh;
