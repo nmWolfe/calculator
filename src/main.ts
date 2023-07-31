@@ -32,7 +32,7 @@ if (
 const scienceSwitch =
   document.querySelector<HTMLButtonElement>("#scientific-switch");
 if (!scienceSwitch) {
-  throw new Error("Var NULL error");
+  throw new Error("Science Switch Var error");
 }
 const toggleScienceCalc = () => {
   const extended = document.querySelector<HTMLDivElement>(".extended");
@@ -42,11 +42,9 @@ const toggleScienceCalc = () => {
   extended.classList.toggle("show");
 };
 scienceSwitch.addEventListener("click", toggleScienceCalc);
+
 display.value = "0";
 let resultDisplayed = false;
-
-console.log(keypadOpArr);
-console.log(sciOpArr);
 
 // Clear the display
 const clearDisplay = () => {
@@ -110,6 +108,9 @@ const evaluateEquation = () => {
     case "*":
       result = firstNum * secondNum;
       break;
+    case "^":
+      result = firstNum ** secondNum;
+      break;
     default:
       result = "0";
   }
@@ -135,32 +136,69 @@ equals.addEventListener("click", evaluateEquation);
 
 // Add PI to display as a number.
 const handlePi = () => {
-  const piNum = Math.PI;
-  display.value = String(piNum);
+  display.value = String(Math.PI.toFixed(5));
 };
-sciOpArr[0].addEventListener("click", handlePi);
-
+// Display Sin/Tan/Cos
+const handleSin = () => {
+  const number = Number(display.value);
+  display.value = String(Math.sin(number).toFixed(5));
+};
+const handleCos = () => {
+  const number = Number(display.value);
+  display.value = String(Math.cos(number).toFixed(5));
+};
+const handleTan = () => {
+  const number = Number(display.value);
+  display.value = String(Math.tan(number).toFixed(5));
+};
+// Display Log
+const handleLog = () => {
+  const number = Number(display.value);
+  display.value = String(Math.log(number).toFixed(5));
+};
+// Square a number
+const handleSquare = () => {
+  const num = Number(display.value);
+  display.value = String(num ** 2);
+};
+// Cube a number
+const handleCubed = () => {
+  const num = Number(display.value);
+  display.value = String(num ** 3);
+};
 // Return SQrt to display
 const handleSqRt = () => {
-  const squaredNum = Math.sqrt(Number(display.value));
-  display.value = String(squaredNum);
+  const num = Math.sqrt(Number(display.value));
+  display.value = String(num);
 };
-sciOpArr[7].addEventListener("click", handleSqRt);
-
+// Display ANSWER value
+const handleAns = () => {
+  display.value = sciOpArr[9].value;
+};
 // Convert current display to percentage
 const returnPercentage = () => {
   const numToConvert = Number(display.value);
   display.value = String(numToConvert / 100);
 };
-sciOpArr[8].addEventListener("click", returnPercentage);
 
-// Display ANSWER value
-const handleAns = () => {
-  display.value = sciOpArr[9].value;
-};
-sciOpArr[9].addEventListener("click", handleAns);
+const opFunctions = [
+  handlePi,
+  handleSin,
+  handleCos,
+  handleTan,
+  handleLog,
+  handleSquare,
+  handleCubed,
+  handleOperator,
+  handleSqRt,
+  handleAns,
+  returnPercentage,
+];
+for (let i: number = 0; i < opFunctions.length; i++) {
+  sciOpArr[i].addEventListener("click", opFunctions[i]);
+}
 
-// // Searches for nums + .
+// // Searches for numbers + .
 // const reSearchError = /[^0-9.]/g;
 // // Searches for operators
 // const reSearchOperators = /[-\*\+\/\(\)]/;
@@ -174,3 +212,5 @@ sciOpArr[9].addEventListener("click", handleAns);
 //     display.value = display.value.slice(0, -1);
 //   }
 // };
+
+console.log(sciOpArr);
