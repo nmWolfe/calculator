@@ -13,7 +13,6 @@ const keypadOpArr =
 const sciOpArr = document.querySelectorAll<HTMLButtonElement>(
   ".extended__operator"
 );
-
 if (
   !display ||
   !outputDisplay ||
@@ -41,7 +40,6 @@ const toggleScienceCalc = () => {
   }
   extended.classList.toggle("show");
 };
-scienceSwitch.addEventListener("click", toggleScienceCalc);
 
 display.value = "0";
 let resultDisplayed = false;
@@ -52,14 +50,10 @@ const clearDisplay = () => {
   outputDisplay.value = "";
   operatorDisplay.value = "";
 };
-allClear.addEventListener("click", clearDisplay);
-
 // Delete last input
 const deleteLastInput = () => {
   display.value = display.value.slice(0, -1);
 };
-backspace.addEventListener("click", deleteLastInput);
-
 // Update display with keypad values
 const updateDisplay = (event: Event) => {
   const buttonVal = event.target as HTMLButtonElement;
@@ -72,7 +66,7 @@ const updateDisplay = (event: Event) => {
   }
   display.value += buttonVal.innerHTML;
 };
-
+// Handle operator inputs
 const handleOperator = (event: Event) => {
   if (resultDisplayed) {
     display.value = "";
@@ -89,7 +83,6 @@ const handleOperator = (event: Event) => {
   outputDisplay.value = display.value;
   display.value = "0";
 };
-
 // Evaluate
 const evaluateEquation = () => {
   const firstNum = parseFloat(outputDisplay.value);
@@ -125,15 +118,6 @@ const evaluateEquation = () => {
     button.disabled = false;
   });
 };
-
-keypadValueArr.forEach((button) => {
-  button.addEventListener("click", updateDisplay);
-});
-keypadOpArr.forEach((button) => {
-  button.addEventListener("click", handleOperator);
-});
-equals.addEventListener("click", evaluateEquation);
-
 // Add PI to display as a number.
 const handlePi = () => {
   display.value = String(Math.PI.toFixed(5));
@@ -181,6 +165,7 @@ const returnPercentage = () => {
   display.value = String(numToConvert / 100);
 };
 
+// Array of funcs for sci-ops, plus loop to tidy eventListeners
 const opFunctions = [
   handlePi,
   handleSin,
@@ -197,7 +182,17 @@ const opFunctions = [
 for (let i: number = 0; i < opFunctions.length; i++) {
   sciOpArr[i].addEventListener("click", opFunctions[i]);
 }
-
+// Event listeners
+scienceSwitch.addEventListener("click", toggleScienceCalc);
+allClear.addEventListener("click", clearDisplay);
+backspace.addEventListener("click", deleteLastInput);
+keypadValueArr.forEach((button) => {
+  button.addEventListener("click", updateDisplay);
+});
+keypadOpArr.forEach((button) => {
+  button.addEventListener("click", handleOperator);
+});
+equals.addEventListener("click", evaluateEquation);
 // // Searches for numbers + .
 // const reSearchError = /[^0-9.]/g;
 // // Searches for operators
@@ -212,5 +207,3 @@ for (let i: number = 0; i < opFunctions.length; i++) {
 //     display.value = display.value.slice(0, -1);
 //   }
 // };
-
-console.log(sciOpArr);
