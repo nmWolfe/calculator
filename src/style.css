@@ -160,7 +160,6 @@ body {
 }
 .lower__section .basic__keypad .arithmetic__main .clear__operator {
   background-color: #f5ae94;
-  grid-row: 3/span 2;
 }
 .lower__section .basic__keypad .arithmetic__main .result__operator {
   background-color: #fe6430;
