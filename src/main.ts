@@ -137,6 +137,9 @@ const handleTan = () => {
 };
 // Display Log
 const handleLog = () => {
+  if (display.value === "0" || display.value === "") {
+    return;
+  }
   const number = Number(display.value);
   display.value = String(Math.log(number).toFixed(5));
 };
