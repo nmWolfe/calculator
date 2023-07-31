@@ -2,9 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <title>Calculator</title>
   </head>
   <body>
     <div class="wrapper">
@@ -21,20 +20,25 @@
         <div></div>
         <input type="text" class="output" />
         <input type="text" class="operator" />
+        <input type="text" class="answer" />
         <input type="text" class="display" />
       </section>
       <section class="lower__section">
         <div class="extended">
-          <button class="extended__operator" id="square-root">&#8730;</button>
-          <button class="extended__operator" id="pi">&pi;</button>
-          <button class="extended__operator" id="sin">sin</button>
-          <button class="extended__operator" id="cos">cos</button>
-          <button class="extended__operator" id="tan">tan</button>
-          <button class="extended__operator" id="tan">log</button>
-          <button class="extended__operator" id="bracket-left">(</button>
-          <button class="extended__operator" id="bracket-right">)</button>
-          <button class="extended__operator" id="percentage">%</button>
-          <button class="extended__operator" id="answer">Ans</button>
+          <div class="extended__upper">
+            <button class="extended__operator" id="pi">&pi;</button>
+            <button class="extended__operator" id="sin">sin</button>
+            <button class="extended__operator" id="cos">cos</button>
+            <button class="extended__operator" id="tan">tan</button>
+            <button class="extended__operator" id="log">log</button>
+          </div>
+          <div class="extended__lower">
+            <button class="extended__operator" id="squared">x&sup2;</button>
+            <button class="extended__operator" id="cubed">x&sup3;</button>
+            <button class="extended__operator" id="pow">^</button>
+            <button class="extended__operator" id="square-root">&#8730;</button>
+            <button class="extended__operator" id="answer">Ans</button>
+          </div>
         </div>
         <div class="basic__keypad">
           <div class="keypad">
@@ -56,7 +60,8 @@
             <button class="keypad__operator" id="add">+</button>
             <button class="keypad__operator" id="divide">/</button>
             <button class="keypad__operator" id="subtract">-</button>
-            <button class="clear__operator" id="clear">AC</button>
+            <button class="extended__operator" id="percentage">%</button>
+            <button class="allclear__operator" id="clear">AC</button>
             <button class="result__operator" id="equals">=</button>
           </div>
         </div>

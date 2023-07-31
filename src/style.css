@@ -17,10 +17,12 @@ body {
   margin: auto;
   box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 10px -1px, rgba(255, 255, 255, 0.3) 0px 1px 10px -1px;
   border-radius: 10%;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
 }
 
 .header {
-  padding: 20px;
+  padding: 40px;
 }
 .header h2 {
   color: #fefefe;
@@ -50,7 +52,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   gap: 20px;
-  padding: 20px;
+  padding: 10px;
   height: 40%;
   max-width: 100%;
   background-color: #37484e;
@@ -74,6 +76,13 @@ body {
   height: 3vh;
   font-size: 2rem;
 }
+.upper__section .answer {
+  border: none;
+  text-align: left;
+  background-color: #37484e;
+  margin-top: 20px;
+  color: #fefefe;
+}
 .upper__section .display {
   height: 10vh;
   font-size: 3rem;
@@ -90,7 +99,7 @@ body {
   border-radius: 2%;
 }
 .lower__section .extended {
-  display: flex;
+  display: grid;
   gap: 5px;
   padding: 0 7px;
   width: 100%;
@@ -98,13 +107,21 @@ body {
   max-height: 0;
   transition: max-height 0.5s ease-in;
 }
-.lower__section .extended .extended__operator {
-  flex: 1;
+.lower__section .extended__upper {
+  display: inherit;
+  grid-template-columns: repeat(5, 1fr);
+  width: 100%;
+}
+.lower__section .extended__lower {
+  display: inherit;
+  grid-template-columns: repeat(5, 1fr);
+  width: 100%;
+}
+.lower__section .extended__operator {
   border-radius: 10%;
   font-size: 1.5rem;
   background-color: rgba(229, 229, 229, 0.7215686275);
   font-weight: 400;
-  border: none;
 }
 .lower__section .extended.show {
   max-height: 100vh;
@@ -115,7 +132,7 @@ body {
   width: 100%;
 }
 .lower__section .basic__keypad .keypad {
-  display: grid;
+  display: inherit;
   grid-template-columns: 1fr 1fr 1fr;
   width: 100%;
   gap: 5px;
@@ -131,7 +148,7 @@ body {
   background: none;
 }
 .lower__section .basic__keypad .arithmetic__main {
-  display: grid;
+  display: inherit;
   grid-template-columns: 1fr 1fr;
   gap: 5px;
   padding: 5px;
@@ -143,7 +160,6 @@ body {
 }
 .lower__section .basic__keypad .arithmetic__main .clear__operator {
   background-color: #f5ae94;
-  grid-row: 3/span 2;
 }
 .lower__section .basic__keypad .arithmetic__main .result__operator {
   background-color: #fe6430;
@@ -162,7 +178,8 @@ body {
 
 @media screen and (min-width: 550px) {
   .wrapper {
-    margin-top: 12vh;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
     max-width: -moz-fit-content;
     max-width: fit-content;
   }
@@ -175,6 +192,17 @@ body {
     padding: 0;
     max-width: 0;
     max-height: 100vw;
+  }
+  .lower__section .extended__upper {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, 1fr);
+  }
+  .lower__section .extended__lower {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, 1fr);
+  }
+  .lower__section .extended__operator {
+    padding: 5px;
   }
   .lower__section .extended.show {
     max-width: -moz-fit-content;
