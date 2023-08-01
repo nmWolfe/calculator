@@ -6,7 +6,7 @@ const operatorDisplay = document.querySelector<HTMLInputElement>(".operator");
 const answerDisplay = document.querySelector<HTMLInputElement>(".answer");
 const allClear = document.querySelector("#clear");
 const backspace = document.querySelector("#delete");
-const equals = document.querySelector<HTMLButtonElement>("#equals");
+const equals = document.querySelector("#equals");
 const keypadValueArr = document.querySelectorAll(".keypad__value");
 const keypadOpArr =
   document.querySelectorAll<HTMLButtonElement>(".keypad__operator");
@@ -61,7 +61,7 @@ const updateDisplay = (event: Event) => {
     display.value = "";
     resultDisplayed = false;
   }
-  if (display.value == "0") {
+  if (display.value === "0") {
     display.value = "";
   }
   display.value += buttonVal.innerHTML;
@@ -72,14 +72,21 @@ const handleOperator = (event: Event) => {
     display.value = "";
     resultDisplayed = false;
   }
-  if (display.value == "") {
+  const target = event.target as HTMLButtonElement;
+  if (target.innerHTML === "-") {
+    if (display.value === "" || display.value === "0") {
+      display.value = target.innerHTML;
+    }
+  }
+  if (display.value === "" || display.value === "-") {
     return;
   }
-  const target = event.target as HTMLButtonElement;
   operatorDisplay.value = target.innerHTML;
   keypadOpArr.forEach((button) => {
     button.disabled = true;
   });
+  // I'm sorry for this.. I could not figure out an easier way.
+  keypadOpArr[3].disabled = false;
   outputDisplay.value = display.value;
   display.value = "0";
 };
@@ -96,8 +103,13 @@ const evaluateEquation = () => {
       result = firstNum - secondNum;
       break;
     case "/":
-      result = firstNum / secondNum;
-      break;
+      if (secondNum === 0) {
+        result = "Error";
+        break;
+      } else {
+        result = firstNum / secondNum;
+        break;
+      }
     case "*":
       result = firstNum * secondNum;
       break;
@@ -118,7 +130,10 @@ const evaluateEquation = () => {
     button.disabled = false;
   });
 };
-// Add PI to display as a number.
+
+// ********** Scientific ops functions ************ //
+
+// Add PI to display
 const handlePi = () => {
   display.value = String(Math.PI.toFixed(5));
 };
@@ -147,11 +162,15 @@ const handleLog = () => {
 const handleSquare = () => {
   const num = Number(display.value);
   display.value = String(num ** 2);
+  answerDisplay.value = `Ans = ${display.value}`;
+  sciOpArr[9].value = display.value;
 };
 // Cube a number
 const handleCubed = () => {
   const num = Number(display.value);
   display.value = String(num ** 3);
+  answerDisplay.value = `Ans = ${display.value}`;
+  sciOpArr[9].value = display.value;
 };
 // Return SQrt to display
 const handleSqRt = () => {
@@ -185,6 +204,7 @@ const opFunctions = [
 for (let i: number = 0; i < opFunctions.length; i++) {
   sciOpArr[i].addEventListener("click", opFunctions[i]);
 }
+
 // Event listeners
 scienceSwitch.addEventListener("click", toggleScienceCalc);
 allClear.addEventListener("click", clearDisplay);
@@ -196,17 +216,3 @@ keypadOpArr.forEach((button) => {
   button.addEventListener("click", handleOperator);
 });
 equals.addEventListener("click", evaluateEquation);
-// // Searches for numbers + .
-// const reSearchError = /[^0-9.]/g;
-// // Searches for operators
-// const reSearchOperators = /[-\*\+\/\(\)]/;
-// // Checking for double arithmetic inputs
-// // take an input, check new input against previous input - if input is non character - don't allow?
-// const reDoubleSearch = /[-\*\+\/\(](?=[-\*\+\/\(\)])/;
-
-// // Check for repeat operator inputs ========= Necessary later w/ scientific
-// const handleRepeatInputs = () => {
-//   if (reDoubleSearch.test(display.value)) {
-//     display.value = display.value.slice(0, -1);
-//   }
-// };
