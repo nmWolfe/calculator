@@ -174,6 +174,10 @@ const handleCubed = () => {
 };
 // Return SQrt to display
 const handleSqRt = () => {
+  if (Number(display.value) < 0) {
+    display.value = "0";
+    return;
+  }
   const num = Math.sqrt(Number(display.value));
   display.value = String(num);
 };
