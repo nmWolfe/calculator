@@ -1,16 +1,21 @@
 {
   "name": "calculator-project",
-  "private": true,
+  "homepage": "https://nmWolfe.github.io/calculator-project",
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "sass": "^1.64.1",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
+  },
+  "dependencies": {
+    "gh-pages": "^5.0.0"
   }
 }
