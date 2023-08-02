@@ -42,6 +42,9 @@ body {
     }
     img {
       width: 30px;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }

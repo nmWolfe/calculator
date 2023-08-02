@@ -178,7 +178,7 @@ const handleSqRt = () => {
     display.value = "0";
     return;
   }
-  const num = Math.sqrt(Number(display.value));
+  const num = Math.sqrt(Number(display.value)).toFixed(5);
   display.value = String(num);
 };
 // Display ANSWER value
